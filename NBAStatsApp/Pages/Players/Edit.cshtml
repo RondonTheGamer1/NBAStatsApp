@@ -1,0 +1,66 @@
+﻿@page
+@model NBAStatsApp.Pages.Players.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Player</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <!-- חשוב להוסיף enctype -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Player.Id" />
+            <div class="form-group">
+                <label asp-for="Player.Name" class="control-label"></label>
+                <input asp-for="Player.Name" class="form-control" />
+                <span asp-validation-for="Player.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Player.PointsPerGame" class="control-label"></label>
+                <input asp-for="Player.PointsPerGame" class="form-control" />
+                <span asp-validation-for="Player.PointsPerGame" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Player.AssistsPerGame" class="control-label"></label>
+                <input asp-for="Player.AssistsPerGame" class="form-control" />
+                <span asp-validation-for="Player.AssistsPerGame" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Player.ReboundsPerGame" class="control-label"></label>
+                <input asp-for="Player.ReboundsPerGame" class="form-control" />
+                <span asp-validation-for="Player.ReboundsPerGame" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Player.Team" class="control-label"></label>
+                <select asp-for="Player.TeamId" class="form-control" asp-items="ViewBag.TeamId"></select>
+                <span asp-validation-for="Player.TeamId" class="text-danger"></span>
+            </div>
+
+            <!-- שדה העלאת תמונה -->
+            <div class="form-group">
+                <label for="ImageFile">Upload Image</label>
+                <input type="file" name="ImageFile" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

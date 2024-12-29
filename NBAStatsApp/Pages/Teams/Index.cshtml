@@ -1,0 +1,59 @@
+﻿@page
+@model NBAStatsApp.Pages.Teams.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="border: 2px solid green; padding: 10px; color: green; font-weight: bold;">
+    Teams
+</h1><p>
+<p>
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
+</p>
+<form>
+    <div>
+        <p>
+            Find by Name:
+            <input type="text" name="SearchString" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Team[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Team[0].City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Team[0].Coach)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Team) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coach)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                 <a asp-page="./Details" asp-route-teamId="@item.Id">Details</a>
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

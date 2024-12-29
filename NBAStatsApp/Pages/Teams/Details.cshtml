@@ -1,0 +1,32 @@
+﻿@page "{teamId:int}"
+@model NBAStatsApp.Pages.Teams.DetailsModel
+
+@{
+    ViewData["Title"] = "Team Details";
+}
+
+<h1>@Model.Team.Name</h1>
+<h3>Players</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Points per Game</th>
+            <th>Assists per Game</th>
+            <th>Rebounds per Game</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model.Players)
+        {
+            <tr>
+                <td>@player.Name</td>
+                <td>@player.PointsPerGame</td>
+                <td>@player.AssistsPerGame</td>
+                <td>@player.ReboundsPerGame</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
